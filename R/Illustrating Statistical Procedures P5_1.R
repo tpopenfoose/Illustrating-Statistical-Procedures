@@ -4,7 +4,7 @@
 load("qci.Rdata")   # qci.Rdata must be in your working directory 
                     # See READMEdata
 
-# The R code used in the Procedure uses functions from the descr package.
+# The R code in this Procedure uses functions from the descr package.
 # To install the package, run the line of code below that begins with 
 # "install.packages" but first remove the #.
 # NOTE: You need an internet connection.
