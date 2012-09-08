@@ -1,34 +1,15 @@
 # Procedure 5.3 Multivariate graphs & displays
 
-# There are many graphics outputs to follow.
-# At the first blank window, right-click or ENTER to obtain the first output,
-# then right-clisk or ENTER to progress through the outputs.
-devAskNewPage(ask=TRUE)
+# To open the qci data:
+load("qci.Rdata")   # qci.Rdata must be in your working directory 
+                    # See READMEdata
 
+# The R code used in the Procedure uses functions from the psych, plotrix, lattice, TeachingDemos and symbols package.
+# To install the package, run the line of code below that begins with "install.packages" but first remove the #.
+# NOTE: You need an internet connection.
+# If you are asked for a CRAN mirror, select any convenient mirror.
 
-# Set the working directory
-
-setwd("~/Cooksey")
-
-# Read in the data file
-
-qci = read.csv("QCI.csv", header = TRUE)
-
-# Three variables are not numeric; they are factors.
-# 'Factor' is R's way of dealing with nominal or categorical variables
-# The three variables are: company, educlev, and gender.
-# Setting up the factors:
-
-qci$company = factor(qci$company)
-qci$inspector = factor(qci$inspector)
-qci$educlev = factor(qci$educlev)
-qci$gender = factor(qci$gender)
-
-# and change their labels from numbers to something more meaningful
-
-levels(qci$company) = c("PC", "LEA", "SEA", "LBC", "Auto")
-levels(qci$educlev) = c("High School", "Tertiary or Vocational")
-levels(qci$gender) = c("Male", "Female")
+# install.packages(c("psych", "plotrix", "lattice", "TeachingDemos", "symbols"), dependencies = TRUE)
 
 
 ############################################
