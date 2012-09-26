@@ -4,20 +4,21 @@
 load("qci.Rdata")   # qci.Rdata must be in your working directory 
                     # See READMEdata
 
-# The R code used in the Procedure uses functions from the psych package.
-# To install the package, run the line of code below that 
+# The R code used in the Procedure uses functions 
+# from the psych and polycor packages.
+# To install the packages, run the line of code below that 
 # begins with "install.packages" but first remove the #.
 # NOTE: You need an internet connection.
 # If you are asked for a CRAN mirror, select any convenient mirror.
 
-# install.packages("psych", dependencies = TRUE)
+# install.packages(c("psych", "polycor"), dependencies = TRUE)
 
 
 # Simple pearson r correlation
 
 cor(qci$accuracy, qci$workcond, use = "pairwise")
 
-# Spearman fho correlation
+# Spearman rho correlation
 
 cor(qci$accuracy, qci$workcond, method = "spearman", use = "pairwise")
 
@@ -77,3 +78,7 @@ round(biserial(qci[, 6:9], qci$educlev), 3)
 round(cor(qci[, 6:9], as.numeric(qci$educlev), method = "pearson", use = "pairwise"), 3)
 
 detach(package:psych)
+
+
+# Fox J (2009). polycor: Polychoric and Polyserial Correlations. R package version 0.7-7, URL
+# http://CRAN.R-project.org/package=polycor.

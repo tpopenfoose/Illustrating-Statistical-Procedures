@@ -1,0 +1,29 @@
+
+
+somersXY <- function(x, y) {
+ out <- table(x, y)
+ r <- nrow(out)
+ c <- ncol(out)
+ p <- matrix(rep(0, r * c), ncol = c)
+ q <- matrix(rep(0, r * c), ncol = c)
+ somers.num <- 0
+ if (c > 1){
+ for (i in 2 : r) {
+ for (j in 2 : c) {
+ p[i, j] <- sum(out[i, j] *
+ sum(out[1:(i - 1), 1 : (j - 1)]))
+ }
+ }
+ for (i in 2 : r) {
+ for (j in 1 : (c - 1)) {
+ q[i, j] <- sum(out[i, j] *
+ sum(out[1:(i - 1), (j + 1) : c]))
+ }
+ }
+ somers.num <- (sum(p) - sum(q))
+ }
+ n <- length(x)
+ out.x <- table(x)
+ somers.den <- 0.5 * (n * (n - 1) - sum(out.x * (out.x - 1)))
+ somers.num / somers.den
+ }
