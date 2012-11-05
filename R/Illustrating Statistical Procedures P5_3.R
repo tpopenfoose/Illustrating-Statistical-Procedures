@@ -11,7 +11,7 @@ load("qci.Rdata")   # qci.Rdata must be in your working directory
 # NOTE: You need an internet connection.
 # If you are asked for a CRAN mirror, select any convenient mirror.
 
-# install.packages(c("psych", "plotrix", "lattice", "TeachingDemos", "symbols"), dependencies = TRUE)
+# install.packages(c("psych", "plotrix", "lattice", "TeachingDemos", "symbols"))
 
 # There are many graphics outputs to follow.
 # Running all the code in one block will result 

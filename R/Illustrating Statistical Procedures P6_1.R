@@ -11,7 +11,7 @@ load("qci.Rdata")   # qci.Rdata must be in your working directory
 # NOTE: You need an internet connection.
 # If you are asked for a CRAN mirror, select any convenient mirror.
 
-# install.packages(c("psych", "polycor"), dependencies = TRUE)
+# install.packages(c("psych", "polycor"))
 
 
 # Simple pearson r correlation
@@ -49,7 +49,7 @@ round(cor(qci[, 6:9], method = "spearman", use = "pairwise"), 3) # Table 6.2
 
 
 # The last nine variables in qci are measured using on 7-point scales.
-# It might me reasonable to assume that the variables represent 
+# It might be reasonable to assume that the variables represent 
 # unobserved continuous normal variables.
 # If so, then polychoric correlations are appropriate. 
 # Polychoric are like tetrachoric except the variables in polychoric correlations 
@@ -78,7 +78,3 @@ round(biserial(qci[, 6:9], qci$educlev), 3)
 round(cor(qci[, 6:9], as.numeric(qci$educlev), method = "pearson", use = "pairwise"), 3)
 
 detach(package:psych)
-
-
-# Fox J (2009). polycor: Polychoric and Polyserial Correlations. R package version 0.7-7, URL
-# http://CRAN.R-project.org/package=polycor.

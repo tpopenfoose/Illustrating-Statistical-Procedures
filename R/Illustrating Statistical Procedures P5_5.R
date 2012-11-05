@@ -11,7 +11,7 @@ load("qci.Rdata")   # qci.Rdata must be in your working directory
 # NOTE: You need an internet connection.
 # If you are asked for a CRAN mirror, select any convenient mirror.
 
-# install.packages(c("psych", "plyr"), dependencies = TRUE)
+# install.packages(c("psych", "plyr"))
 
 
 ################################

@@ -10,7 +10,7 @@ load("qci.Rdata")   # qci.Rdata must be in your working directory
 # NOTE: You need an internet connection.
 # If you are asked for a CRAN mirror, select any convenient mirror.
 
-# install.packages("psych", dependencies = TRUE)
+# install.packages("psych")
 
 
 # Standardised scores are given by the scale() function
