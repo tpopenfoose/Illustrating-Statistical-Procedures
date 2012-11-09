@@ -42,8 +42,8 @@ pairs.panels(qci[, c(5:9)], pch = 1, scale = TRUE, smooth = FALSE, ellipses = FA
 # There is overplotting in the scatterplots.
 # Jittering deals with the overplotting.
 
-qci$jobsatj = jitter(qci$jobsat, factor = 1)
-qci$workcondj = jitter(qci$workcond, factor = 1)
+qci$jobsatj <- jitter(qci$jobsat, factor = 1)
+qci$workcondj <- jitter(qci$workcond, factor = 1)
 pairs.panels(qci[, c(5:7, 19:20)], pch = 1, scale = TRUE, smooth = FALSE, ellipses = FALSE)
 title(main = list(expression(paste("Figure 5.10 Scatterplot matrix"))), line = 3)
 detach(package:psych)
@@ -57,8 +57,8 @@ detach(package:psych)
 # The polar.plot() function in the plotrix package is used here.
 
 library(plotrix)
-testpos = seq(0, by = 360/9, length = 9)
-testlen = qci[c(66, 104), 10:18] 
+testpos <- seq(0, by = 360/9, length = 9)
+testlen <- qci[c(66, 104), 10:18] 
 polar.plot(testlen, testpos, start = 90, clockwise = TRUE, lwd = 2, rp.type = "p",  
     show.grid= TRUE, label.pos = seq(0, by = 360/9, length = 9), 
 	labels = names(qci[, 10:18]), radial.lim = c(0, 7), mar = c(5,5,5,5))
@@ -67,11 +67,11 @@ title(main = "Figure 5.11 Radar plot comparing attitude ratings\nfor inspector 6
 par(mar = c(5, 4, 4, 2) + .1)
 detach(package:plotrix)
 
-company.means = aggregate(x = qci[, 10:18], by = list(company = qci$company), 
+company.means <- aggregate(x = qci[, 10:18], by = list(company = qci$company), 
    FUN = "mean", na.rm = TRUE)
 library(plotrix)
-testpos = seq(0, by = 360/9, length = 9)
-testlen = company.means[1:5, 2:10] 
+testpos <- seq(0, by = 360/9, length = 9)
+testlen <- company.means[1:5, 2:10] 
 polar.plot(testlen, testpos, start = 90, clockwise = TRUE, lwd = 2, rp.type = "p",  
     show.grid= TRUE, label.pos = seq(0, by = 360/9, length = 9), 
 	labels = names(qci[, 10:18]), radial.lim = c(2, 5.5), mar = c(5,5,5,5))
@@ -89,7 +89,7 @@ detach(package:plotrix)
 # The layout() function creates five displays on the one page.
 # The plot() function plots in each display in turn.
 
-op = par(mar = c(0,0,1.5,0),  xaxt = "n", yaxt = "n")
+op <- par(mar = c(0,0,1.5,0),  xaxt = "n", yaxt = "n")
 layout(matrix(c(1,2,3,4,5), ncol = 5), respect = TRUE)
 plot(x = 1:9, y = company.means[1, 2:10], main = "PC", xlab = "", ylab = "", 
    type = "l", ylim = c(1,7))
@@ -107,7 +107,7 @@ layout(1)
 # An alternative is to plot the profiles in a single display,
 # then colour-code for company types.
 
-op = par(mar = c(7,4,4,1))
+op <- par(mar = c(7,4,4,1))
 plot(x = 1:9, y = company.means[1, 2:10], type = "l", xaxt = "n", 
    ylim = c(1,7), lwd = 2, las = 1, xlab = "", ylab = "Average ratings")
 axis(1, at = 1:9, labels = names(company.means)[2:10], las = 2)
@@ -122,7 +122,7 @@ par(op)
 
 # The lattice package was designed for multiple plots on the one page
 
-long = reshape(company.means, idvar = "company", varying = list(2:10), 
+long <- reshape(company.means, idvar = "company", varying = list(2:10), 
    v.names = "ratings", direction = "long", timevar = "variable")
 library(lattice)
 
@@ -160,7 +160,7 @@ parallelplot(~qci[, 10:18] | company, data = qci, layout = c(5,1), col = "black"
 
 #   The two companies in Figure 5.14
 
-qci.sub = subset(qci, company == "PC" | company == "Auto")
+qci.sub <- subset(qci, company == "PC" | company == "Auto")
 parallelplot(~qci.sub[, 10:18] | company, data = qci.sub, layout = c(2,1), col = "black")
 
 detach(package:lattice)
@@ -223,7 +223,7 @@ detach(package:symbols)
 
 # The stars() function allows independent normalisation
 
-df = qci[c(3,4,17,40,60,66,75,86,104,111), 10:18] / 7
+df <- qci[c(3,4,17,40,60,66,75,86,104,111), 10:18] / 7
 
 stars(df, scale = FALSE)
 

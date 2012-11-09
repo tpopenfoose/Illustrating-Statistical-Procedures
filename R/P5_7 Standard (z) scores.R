@@ -14,17 +14,17 @@ load("qci.Rdata")   # qci.Rdata must be in your working directory
 
 
 # Standardised scores are given by the scale() function
-Zaccuracy = scale(qci$accuracy)
+(Zaccuracy <- scale(qci$accuracy))
 
 # Given the Z scores, the T scores can be calculated. 
 
-Tacc.calc = Zaccuracy * 10 + 50
+(Tacc.calc <- Zaccuracy * 10 + 50)
 
 # Or the T scores can be obtained using the rescale() function in the psych package.
 # The results from the two are identical.
 
 library(psych)
-Tacc.psych = rescale(qci$accuracy, mean = 50, sd = 10, df = FALSE)
+Tacc.psych <- rescale(qci$accuracy, mean = 50, sd = 10, df = FALSE)
 identical(Tacc.calc, Tacc.psych)     # Should return TRUE, indicating the two are identical
 
 # For stanines, the mean = 5, the standard deviation = 2
@@ -39,19 +39,19 @@ detach(package:psych)
 
 # Calculate the transformed scales, rounding off to two decimal places
 library(psych)
-Zacc = round(rescale(qci$accuracy, mean = 0, sd = 1, df = FALSE), 2)
-Zspeed =  round(rescale(qci$speed, mean = 0, sd = 1, df = FALSE), 2)
-Tacc =  round(rescale(qci$accuracy, mean = 50, sd = 10, df = FALSE), 2)
-Tspeed =  round(rescale(qci$accuracy, mean = 50, sd = 10, df = FALSE), 2)
+Zacc <- round(rescale(qci$accuracy, mean = 0, sd = 1, df = FALSE), 2)
+Zspeed <-  round(rescale(qci$speed, mean = 0, sd = 1, df = FALSE), 2)
+Tacc <-  round(rescale(qci$accuracy, mean = 50, sd = 10, df = FALSE), 2)
+Tspeed <-  round(rescale(qci$accuracy, mean = 50, sd = 10, df = FALSE), 2)
 
 # Combine the transformed scales with qci
-qci = cbind(qci, Zacc, Zspeed, Tacc, Tspeed)
+qci <- cbind(qci, Zacc, Zspeed, Tacc, Tspeed)
 
 # Select IDs for the top 22 most accurate inspectors
-id = order(qci$accuracy, decreasing = TRUE)[1:22]
+id <- order(qci$accuracy, decreasing = TRUE)[1:22]
 
 # The list in Table 5.5 plus T scores
-(qci.top22 = qci[id, c("inspector", "company", "educlev", "gender", 
+(qci.top22 <- qci[id, c("inspector", "company", "educlev", "gender", 
    "accuracy", "speed", "Zacc", "Zspeed", "Tacc", "Tspeed")])
 
 detach(package:psych)

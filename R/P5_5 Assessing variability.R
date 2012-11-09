@@ -24,11 +24,11 @@ load("qci.Rdata")   # qci.Rdata must be in your working directory
 # Note also, the max() and min() functions also return
 # the maximum and minimum values.
 
-(min.max = range(qci$speed, na.rm = TRUE))
+(min.max <- range(qci$speed, na.rm = TRUE))
 min.max[2] - min.max[1]
 
-(x.min = min(qci$speed, na.rm = TRUE))
-(x.max = max(qci$speed, na.rm = TRUE))
+(x.min <- min(qci$speed, na.rm = TRUE))
+(x.max <- max(qci$speed, na.rm = TRUE))
 x.max - x.min
 
 
@@ -42,8 +42,8 @@ IQR(qci$speed, na.rm = TRUE)
 
 #      Or from the quartiles.
 
-(q1 = quantile(qci$speed, 0.25, na.rm = TRUE))
-(q3 = quantile(qci$speed, 0.75, na.rm = TRUE))
+(q1 <- quantile(qci$speed, 0.25, na.rm = TRUE))
+(q3 <- quantile(qci$speed, 0.75, na.rm = TRUE))
 q3 - q1
 
 #     In R, there are nine ways to position the quantiles. 
@@ -134,7 +134,7 @@ qci$All = "All"
               Kurtosis = round(kurtosi(speed, na.rm = TRUE), 2),
               se = round(describe(speed)$se, 2)))
 
-names(SummaryTable1)[1] = "company"
+names(SummaryTable1)[1] <- "company"
 
-SummaryTable = rbind(SummaryTable1, SummaryTable2)
+SummaryTable <- rbind(SummaryTable1, SummaryTable2)
 SummaryTable

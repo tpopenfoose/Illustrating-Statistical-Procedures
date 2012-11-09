@@ -31,7 +31,7 @@ detach(package:descr)
 ########################
 
 library(vcd)
-mytable = table(qci$educlev, qci$gender)
+mytable <- table(qci$educlev, qci$gender)
 mytable
 assocstats(mytable)
 
@@ -40,7 +40,7 @@ assocstats(mytable)
 #   Cramer's V statistic   #
 ############################
 
-mytable = table(qci$educlev, qci$company)
+mytable <- table(qci$educlev, qci$company)
 mytable
 assocstats(mytable)
 
@@ -51,7 +51,7 @@ detach(package:vcd)
 #   PRE statistic: lambda    #
 ##############################
 
-mytable = table(qci$educlev, qci$company  )
+mytable <- table(qci$educlev, qci$company  )
 mytable
 library(rapport)
 lambda.test(mytable)
@@ -79,7 +79,7 @@ lambda.test <- function(table, direction = 0) {
 }
 
 # then obtain the lambda measures:
-mytable = table(qci$educlev, qci$company  )
+mytable <- table(qci$educlev, qci$company  )
 mytable
 lambda.test(mytable)
 
@@ -88,13 +88,14 @@ lambda.test(mytable)
 # (available from http://cran.stat.ucla.edu/bin/windows/Rtools/).
 # Installation of packages from Github is straightforward using the devtools package:
 
-install.packages("devtools")
-library(devtools)
-install_github('rapport', 'rapporter')
+#To use this option, run the following three lines but first remove the #
+# install.packages("devtools")
+# library(devtools)
+# install_github('rapport', 'rapporter')
 
-# Then obtain the lambda measures:
+# Then obtain the lambda measures using the github version:
 
-mytable = table(qci$educlev, qci$company  )
+mytable <- table(qci$educlev, qci$company  )
 mytable
 library(rapport)
 lambda.test(mytable)
@@ -107,9 +108,9 @@ detach(package:rapport)
 #   Tables 6.7    #
 ###################
 
-cuts = quantile(na.omit(qci$speed), probs = c(.2,.4,.6,.8), type = 6)
-breaks =  c(min(na.omit(qci$speed)), cuts, max(na.omit(qci$speed)))
-qci$cat_speed = cut(qci$speed, breaks = breaks, right = FALSE, include.lowest = TRUE)
+cuts <- quantile(na.omit(qci$speed), probs = c(.2,.4,.6,.8), type = 6)
+breaks <-  c(min(na.omit(qci$speed)), cuts, max(na.omit(qci$speed)))
+qci$cat_speed <- cut(qci$speed, breaks = breaks, right = FALSE, include.lowest = TRUE)
 table(qci$cat_speed, qci$educlev)
 
 
@@ -145,21 +146,21 @@ res2$stats[c("Dxy", "Gamma")]
 # As far as I know, there is no function in any of the packages 
 # for calculating Kendall's tau-c.
 # I could write my own, but a Google search reveals that Douglas Y'barbo
-# has already written the function and posted the result on Stackoverflow: 
+# has already written the function and made it available on Stackoverflow: 
 # http://stackoverflow.com/questions/2567869#2567869
 
 # To calculate Kendall's tau-c
 # run the following lines of code:
 ################################################################
 # number of concordant pairs 
-P = function(t) {   
+P <- function(t) {   
   r_ndx = row(t)
   c_ndx = col(t)
   sum(t * mapply(function(r, c){sum(t[(r_ndx > r) & (c_ndx > c)])},
     r = r_ndx, c = c_ndx))}
 
 # number of discordant pairs
-Q = function(t) {
+Q <- function(t) {
   r_ndx = row(t)
   c_ndx = col(t)
   sum(t * mapply( function(r, c){
@@ -169,7 +170,7 @@ Q = function(t) {
 }
 
 # to calculate tau-c
-kendall_tau_c = function(t){
+kendall_tau_c <- function(t){
     t = as.matrix(t) 
     m = min(dim(t))
     n = sum(t)
@@ -178,5 +179,5 @@ kendall_tau_c = function(t){
 ########################################################################
 
 # then to obtain the tau-c value for the educlev ~ cat_speed table:
-kc = kendall_tau_c(table(qci$educlev, qci$cat_speed))
+kc <- kendall_tau_c(table(qci$educlev, qci$cat_speed))
 kc

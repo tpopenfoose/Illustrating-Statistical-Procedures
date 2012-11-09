@@ -36,8 +36,8 @@ load("qci.Rdata")   # qci.Rdata must be in your working directory
 
 # First, obtain a table of percentages of female inspectors
 
-xF = table(qci$company[qci$gender == "Female"])
-xpF = xF/sum(xF) * 100
+xF <- table(qci$company[qci$gender == "Female"])
+xpF <- xF/sum(xF) * 100
 
 # A basic barplot
 
@@ -50,7 +50,7 @@ box()
 
 # Add more annotations
 
-company.labels = c("PCs\n", "Large electrical\nappliances", "Small electrical\nappliances",
+company.labels <- c("PCs\n", "Large electrical\nappliances", "Small electrical\nappliances",
    "Large business\ncomputers", "Automobiles\n")
 barplot(xpF, las = 1, axis.lty = 1, names.arg = company.labels, cex.names = .8, 
    xlab = "Company Type", ylab = "Percent", ylim = c(0,30))
@@ -62,7 +62,7 @@ title("Figure 5.1 Barchart: Percentage of female inspectors", line = 1)
 #   PIE CHART (Figure 5.2)   #
 ##############################
 
-names(xpF) = c("PCs\n", "Large electrical\nappliances", "Small electrical\nappliances",
+names(xpF) <- c("PCs\n", "Large electrical\nappliances", "Small electrical\nappliances",
    "Large business\ncomputers", "Automobiles\n")
 pie(xF, labels = names(xpF), col = gray(seq(0.4, 0.9, length=5)))
 title("Figure 5.2 Pie chart: Percentage of female inspectors", line = 0)
@@ -129,8 +129,8 @@ box()
 
 library(Hmisc)
 options(digits = 1)
-op = par(las = 1)
-hbb = histbackback(split(qci$speed, qci$educlev), xlim = c(-30, 30), 
+op <- par(las = 1)
+hbb <- histbackback(split(qci$speed, qci$educlev), xlim = c(-30, 30), 
    xlab = "Count", ylab = "Speed")
 barplot(-hbb$left, col = "light grey", horiz = TRUE, space = 0, add = TRUE, axes = FALSE)
 barplot(hbb$right, col = "dark grey", horiz = TRUE, space = 0, add = TRUE, axes = FALSE)
@@ -145,10 +145,10 @@ detach(package:Hmisc)
 
 # An alternative is to draw two density plots
 
-x = qci$speed[qci$educlev == "High School"]
-x = x[is.na(x) == 0]
-y = qci$speed[qci$educlev == "Tertiary or Vocational"]
-y = y[is.na(y) == 0]
+x <- qci$speed[qci$educlev == "High School"]
+x <- x[is.na(x) == 0]
+y <- qci$speed[qci$educlev == "Tertiary or Vocational"]
+y <- y[is.na(y) == 0]
 plot(density(x), col = "red", main = "", xlab = "Speed")
 lines(density(y), col = "blue")
 legend(10, 0.15, legend = c("High School", "Tertiary or Vocational"), 
@@ -165,7 +165,7 @@ title(main = list(expression(paste("for the two categories of the ",
 
 # Obtain a table of means
 
-xbar = tapply(qci$accuracy, qci$company, mean, na.rm = TRUE)
+xbar <- tapply(qci$accuracy, qci$company, mean, na.rm = TRUE)
 xbar
 
 plot(1:5, xbar, type = "b", xaxt = "n", ylim = c(70, 95), las = 1, 
@@ -184,7 +184,7 @@ title(main = list(expression(paste("average inspection ", italic("accuracy")))),
 # base packages, but it is easier to use plotmeans() function in the gplots package.
 
 library(gplots)
-op = par(
+op <- par(
       las = 1,
 	  mar = c(5,4,4,2) + .1,
 	  mgp = c(2.5, .5, 0)

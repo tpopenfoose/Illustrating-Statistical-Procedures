@@ -127,7 +127,7 @@ layout(1)
 # In the boxdata() function, I have set as default some options I like, 
 # but the options can be changed.
 
-boxdata = function(x, y, xlab = "", ylab = "", main = "", 
+boxdata <- function(x, y, xlab = "", ylab = "", main = "", 
    ylim = c(min(y, na.rm = TRUE), max(y, na.rm = TRUE)),
    box.col = "sky blue", box.cex = .3, p.pch = 16, p.col = "red", p.cex = .75) {
    if (is.factor(x) == FALSE)
@@ -184,7 +184,7 @@ detach(package:StatDA)
 
 library(StatDA)
 get(edaplot)
-edaplot.m = function (data, scatter = TRUE, box = TRUE, P.plot = TRUE, D.plot = TRUE, 
+edaplot.m <- function (data, scatter = TRUE, box = TRUE, P.plot = TRUE, D.plot = TRUE, 
     P.main = paste("Histogram of", deparse(substitute(data))), 
     P.sub = NULL, P.xlab = deparse(substitute(data)), P.ylab = default, 
     P.ann = par("ann"), P.axes = TRUE, P.frame.plot = P.axes, 
@@ -301,31 +301,25 @@ detach(package:StatDA)
 library(ggplot2)   # for violin plots
 library(gridExtra)
 
-p1 = ggplot(na.omit(qci), aes(company, accuracy)) +
+p1 <- ggplot(na.omit(qci), aes(company, accuracy)) +
    geom_violin(fill = "grey90") + 
    geom_boxplot(fill = "salmon", outlier.colour = NA, width = .1) +
    theme_bw() + 
-   opts(panel.grid.major = theme_blank(),
-        panel.grid.minor = theme_blank())
+   labs(title = expression(paste("Violin Plots: ", italic("accuracy"))), 
+        x = "Company", y = "Accuracy") +
+   theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
 
-p2 = ggplot(na.omit(qci), aes(company, speed)) +
+p2 <- ggplot(na.omit(qci), aes(company, speed)) +
    geom_violin(fill = "grey90") + 
    geom_boxplot(fill = "salmon", outlier.colour = NA, width = .1) +
    theme_bw() + 
-   opts(panel.grid.major = theme_blank(),
-        panel.grid.minor = theme_blank())
+   labs(title = expression(paste("Violin Plots: ", italic("Speed"))), 
+        x = "Company", y = "Speed") +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
 
 grid.arrange(p1,p2, ncol=2)
-
-title(main = expression(paste("Violin Plots: ", italic("speed"))), 
-   xlab = "Company", ylab = "Speed")
-
-title(main = expression(paste("Violin Plots: ", italic("accuracy"))), 
-   xlab = "Company", ylab = "Accuracy")
-
-
-title(main = expression(paste("Violin Plots: ", italic("speed"))), 
-   xlab = "Company", ylab = "Speed")
 
 
 
@@ -341,12 +335,12 @@ layout(matrix(c(1,2), ncol = 2), respect = FALSE)
 
 beanplot(qci$accuracy ~ qci$company, las = 1, 
    beanlines = "median", overalline = "median")
-title(main = expression(paste("Bean Plots: ", italic("accuracy"))), 
+title(main = expression(paste("Bean Plots: ", italic("Accuracy"))), 
    xlab = "Company", ylab = "Accuracy")
 
 beanplot(qci$speed ~ qci$company, las = 1, log = "",   # stops speed being plotted on a log scale.
    beanlines = "median", overalline = "median")
-title(main = expression(paste("Bean Plots: ", italic("speed"))), 
+title(main = expression(paste("Bean Plots: ", italic("Speed"))), 
    xlab = "Company", ylab = "Speed")
 
 layout(1)
@@ -360,14 +354,14 @@ beanplot(qci$accuracy ~ qci$gender * qci$company, las = 1, side = "both",
    border = NA, col = list("steelblue", "orange"),
    beanlines = "median", overalline = "median")
 legend("topright", bty = "n", fill = c("steelblue", "orange"), legend = c("Male", "Female"))
-title(main = expression(paste("Bean Plots: ", italic("accuracy"))), 
+title(main = expression(paste("Bean Plots: ", italic("Accuracy"))), 
    xlab = "Company", ylab = "Accuracy")
 
 beanplot(qci$speed ~ qci$gender * qci$company, las = 1, log = "", side = "both", 
    border = NA, col = list("steelblue", "orange"),
    beanlines = "median", overalline = "median")
 legend("topright", bty = "n", fill = c("steelblue", "orange"), legend = c("Male", "Female"))
-title(main = expression(paste("Bean Plots: ", italic("speed"))), 
+title(main = expression(paste("Bean Plots: ", italic("Speed"))), 
    xlab = "Company", ylab = "Speed")
    
 layout(1)
