@@ -53,3 +53,11 @@ detach(package:psych)
 
 table(qci$jobsat)
 table(qci$workcond)
+
+# The mfv() function of the modeest package reports multiple modes,
+# but its argument must be numeric.
+library(modeest)
+mfv(qci$jobsat)
+mfv(qci$workcond)
+detach(package:modeest)
+
