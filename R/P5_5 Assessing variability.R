@@ -72,8 +72,8 @@ fivenum(qci$speed, na.rm = TRUE)
 #   variance & standard deviation   #
 #####################################
 
-# Varaince is given by the var() function, 
-# Standard devaition is given by the sd() function
+# Variance is given by the var() function, 
+# Standard deviation is given by the sd() function
 
 var(qci$speed, na.rm = TRUE)
 sd(qci$speed, na.rm = TRUE)

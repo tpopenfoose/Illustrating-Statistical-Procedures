@@ -23,8 +23,8 @@ load("qci.Rdata")   # qci.Rdata must be in your working directory
 # The command means that the user needs to supply a prompt before 
 # moving on to the next graphic.
 # At the first blank graphics window, right-click or press ENTER to obtain 
-# the first output, then right-clisk or press ENTER to progress through the outputs.
-# At the last line of code, there is a corresponnding devAskNewPage command 
+# the first output, then right-click or press ENTER to progress through the outputs.
+# At the last line of code, there is a corresponding devAskNewPage command 
 # to turn off the user prompts. 
 
 # Three graphs require additional interactive input from the user - Figures 5.5, 5.8 & 5.9.
@@ -120,7 +120,7 @@ box()
 # There is a histbackback() function in the Hmisc package
 # then two barplots are drawn.
 # The locator argument in the text() function allows labels for education level
-# to be located in the appropiate half.
+# to be located in the appropriate half.
 # But you do need to know which side is which.
 # 'High school' is on the left.
 # After running the text() function, click first in the left barplot, 
@@ -180,7 +180,7 @@ title(main = list(expression(paste("average inspection ", italic("accuracy")))),
 #   LINE GRAPH WITH CONFIDENCE INTERVALS (Figure 5.7)   #
 #########################################################
 
-# Confidence intervls can be drawn with difficulty using functions available in the 
+# Confidence intervals can be drawn with difficulty using functions available in the 
 # base packages, but it is easier to use plotmeans() function in the gplots package.
 
 library(gplots)

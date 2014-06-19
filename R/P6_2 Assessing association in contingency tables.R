@@ -57,49 +57,6 @@ library(rapport)
 lambda.test(mytable)
 detach(package:rapport)
 
-# Check the version of rapport installed from CRAN.
-# Version 0.4.0 contains an error in the calculation of lambda,
-# but the authors have the correct calculation in their Github repository
-# (https://github.com/Rapporter/rapport).
-# While waiting for the authors to update the CRAN version,
-# you can run the following lines of code.
-# The code is the lambda.test function from the Github version:
-
-lambda.test <- function(table, direction = 0) {
-
-    if (!is.numeric(direction))
-        stop('direction should be an integer between 0 and 2')
-    if (!direction %in% c(0, 1, 2))
-        stop('direction should be an integer between 0 and 2')
-
-    if (direction != 0)
-        (sum(as.numeric(apply(table, direction, max))) - ifelse(direction == 1, max(colSums(table)), max(rowSums(table)))) / (sum(table) - ifelse(direction == 1, max(colSums(table)), max(rowSums(table))))
-    else
-        list(row=lambda.test(table, 1), col=lambda.test(table, 2))
-}
-
-# then obtain the lambda measures:
-mytable <- table(qci$educlev, qci$company  )
-mytable
-lambda.test(mytable)
-
-# Alternatively, you can install the GitHub version.
-# If you’re running R on Windows, you need to install Rtools 
-# (available from http://cran.stat.ucla.edu/bin/windows/Rtools/).
-# Installation of packages from Github is straightforward using the devtools package:
-
-#To use this option, run the following three lines but first remove the #
-# install.packages("devtools")
-# library(devtools)
-# install_github('rapport', 'rapporter')
-
-# Then obtain the lambda measures using the github version:
-
-mytable <- table(qci$educlev, qci$company  )
-mytable
-library(rapport)
-lambda.test(mytable)
-detach(package:rapport)
 
 
 
@@ -118,17 +75,17 @@ table(qci$cat_speed, qci$educlev)
 #   Gamma statistic    #
 ########################
 
-library(rpartOrdinal)
-ordinal.gamma(qci$educlev, qci$cat_speed)
-detach(package:rpartOrdinal)
+library(rpf)
+mat = table(qci$cat_speed, qci$educlev)
+ordinal.gamma(mat)
+detach(package:rpf)
 
 
-############################
-#   Somer's D statistic    #
-############################
+############################################
+#   Somer's D statistic & Gamma statistic  #
+############################################
 
 library(rms)
-# The function can in addition return the Gamma statistic.
 
 # Predicting educlev from cat_speed:
 res1 <- lrm(as.numeric(qci$educlev) ~ as.numeric(qci$cat_speed))

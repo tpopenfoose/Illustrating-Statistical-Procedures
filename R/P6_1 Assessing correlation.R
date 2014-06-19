@@ -27,9 +27,9 @@ cor(qci$accuracy, qci$workcond, method = "spearman", use = "pairwise")
 cor(qci$accuracy, qci$workcond, method = "kendall", use = "pairwise")
 
 
-# In P5_3, a SPLOM was drawn:
-# with scatterplots in the lower half of the matrix;
-# correlations were in the upper half;
+# In P5_3, a SPLOM was drawn,
+# with scatterplots in the lower half of the matrix,
+# correlations in the upper half,
 # and histograms along the diagonal.
 # Two SPLOMs are drawn here. The scatterplots do not show the points but instead
 # correlation ellipses are drawn. 
@@ -52,7 +52,8 @@ round(cor(qci[, 6:9], method = "spearman", use = "pairwise"), 3) # Table 6.2
 # It might be reasonable to assume that the variables represent 
 # unobserved continuous normal variables.
 # If so, then polychoric correlations are appropriate. 
-# Polychoric are like tetrachoric except the variables in polychoric correlations 
+# Polychoric correlations are like tetrachoric correlations except 
+# the variables in polychoric correlations 
 # have more than two categories.
 
 library(psych)

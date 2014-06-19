@@ -23,8 +23,8 @@ load("qci.Rdata")   # qci.Rdata must be in your working directory
 # The command means that the user needs to supply a prompt before 
 # moving on to the next graphic.
 # At the first blank graphics window, right-click or press ENTER to obtain 
-# the first output, then right-clisk or press ENTER to progress through the outputs.
-# At the last line of code, there is a corresponnding devAskNewPage command 
+# the first output, then right-click or press ENTER to progress through the outputs.
+# At the last line of code, there is a corresponding devAskNewPage command 
 # to turn off the user prompts. 
 
 ############################################

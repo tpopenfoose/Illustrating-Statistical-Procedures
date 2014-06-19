@@ -23,8 +23,8 @@ load("qci.Rdata")   # qci.Rdata must be in your working directory
 # The command means that the user needs to supply a prompt before 
 # moving on to the next graphic.
 # At the first blank graphics window, right-click or press ENTER to obtain 
-# the first output, then right-clisk or press ENTER to progress through the outputs.
-# At the last line of code, there is a corresponnding devAskNewPage command 
+# the first output, then right-click or press ENTER to progress through the outputs.
+# At the last line of code, there is a corresponding devAskNewPage command 
 # to turn off the user prompts. 
 
 ###########################################
@@ -123,7 +123,7 @@ layout(1)
 # followed by the points command, and then adjusting the options,
 # I've wrapped it all up in a function called boxdata().
 # This demonstrates a second way in which R is free (the first is that it is free of cost).
-# If you find R's functions do not quite meet you needs, you can write your own function. 
+# If you find R's functions do not quite meet your needs, you can write your own function. 
 # In the boxdata() function, I have set as default some options I like, 
 # but the options can be changed.
 
@@ -175,15 +175,15 @@ detach(package:StatDA)
 # edaplot() has no option for changing the colour of the density line.
 # But edaplot() can be modified.
 # This is important advantage of using of R 
-# and demonstrates another way in which R is free:
-# the code that others have written is always available (using the get() function), 
+# and demonstrates another way in which R is free - 
+# the code that others have written is available, 
 # and can be modified or adapted to suit particular needs.
 # Below is the code for the edaplot() function,
 # but with two modifications to allow colour for the density line to be specified.
 # The modified function is edaplot.m()
 
 library(StatDA)
-get(edaplot)
+edaplot
 edaplot.m <- function (data, scatter = TRUE, box = TRUE, P.plot = TRUE, D.plot = TRUE, 
     P.main = paste("Histogram of", deparse(substitute(data))), 
     P.sub = NULL, P.xlab = deparse(substitute(data)), P.ylab = default, 
